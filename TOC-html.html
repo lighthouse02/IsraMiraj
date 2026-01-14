@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Isi Kandungan — Accordion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f5f6f7;
+      --card: #ffffff;
+      --lvl1: #43009b; /* top-level */
+      --lvl2: #2f2f2f; /* second-level */
+      --lvl3: #555555; /* third-level */
+      --muted: #6b6b6b; /* page numbers useand auxiliary text */
+      --border: rgba(0,0,0,0.06);
+      --sans: 'Titillium Web', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    }
+
+    html,body{height:100%;margin:0}
+    body{font-family:var(--sans);background:var(--bg);display:flex;align-items:flex-start;justify-content:center;padding:48px}
+    .toc{width:420px;background:var(--card);border-radius:8px;padding:22px 20px;box-shadow:0 6px 18px rgba(16,18,32,0.06)}
+    .toc h1{margin:0 0 12px;color:var(--lvl1);letter-spacing:1px;font-size:20px}
+
+    /* reset lists */
+    .toc ul{list-style:none;padding:0;margin:0}
+    .toc li{border-top:1px solid var(--border);padding:10px 0}
+
+    /* details/summary styling */
+    details{margin:0;padding:0;transition:background .12s ease}
+    details[open]{background:rgba(0,0,0,0.02);padding:6px;border-radius:6px}
+    summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+    summary::-webkit-details-marker{display:none}
+
+    /* allow titles to wrap and keep page numbers visible */
+    summary .title{flex:1;min-width:0}
+    summary h2, summary h3{display:block;word-break:break-word}
+
+    /* level colors, sizes and typography */
+    summary h2{margin:0;color:var(--lvl1);font-weight:800;font-size:18px;letter-spacing:0.2px}
+    /* second-level headings */
+    details details summary h3{margin:0;color:var(--lvl2);font-weight:600;font-size:15px;letter-spacing:0.1px}
+    /* third-level headings (slightly lighter, smaller, italic for contrast) */
+    details details details summary h3{margin:0;color:var(--lvl3);font-weight:500;font-size:14px;font-style:italic}
+
+    .page{color:var(--muted);font-weight:600;margin-left:12px}
+
+    /* caret uses current color for monochrome look */
+    summary .caret{width:14px;height:14px;display:inline-block;transform:rotate(0);transition:transform .18s ease}
+    details[open] > summary .caret{transform:rotate(180deg)}
+    .caret:after{content:'▾';color:currentColor;font-size:14px}
+
+    /* indentation per nesting */
+    details > ul{margin-top:8px;padding-left:14px}
+    details details > ul{padding-left:12px}
+    details details details > ul{padding-left:10px}
+
+    .muted{color:var(--muted);font-size:13px}
+    /* leaf/list items */
+    .subitem{color:var(--lvl3);font-size:13px;font-weight:400;margin:6px 0}
+
+    /* leaf node title styles by nesting level */
+    .leaf{padding:6px 0}
+    .leaf.level-0 h2{margin:0;color:var(--lvl1);font-weight:800;font-size:18px}
+    .leaf.level-1 h3{margin:0;color:var(--lvl2);font-weight:600;font-size:15px}
+    .leaf.level-2 h3{margin:0;color:var(--lvl3);font-weight:500;font-size:14px;font-style:italic}
+
+    /* subtle hover focus for discoverability */
+    summary:hover, summary:focus{outline:none;opacity:0.95}
+
+    
+
+    /* small screens */
+    @media (max-width:520px){.toc{width:92vw;padding:16px}}
+  </style>
+</head>
+<body>
+  <nav class="toc" aria-label="Isi Kandungan">
+    <h1>ISI KANDUNGAN</h1>
+    <div id="toc-root"></div>
+  </nav>
+
+  <script>
+    const tocData = {
+  "isi_kandungan": [
+    {
+      "tajuk": "Muqaddimah",
+      "halaman": "ix",
+      "subtopik": []
+    },
+    {
+      "tajuk": "Kalimah Ketiga Puluh Satu",
+      "halaman": 1,
+      "keterangan": "Risalah Isra’ dan Mi‘raj yang membuktikan Mi‘raj Muhammadi dengan dalil-dalil yang pasti",
+      "subtopik": [
+        {
+          "tajuk": "Asas Pertama",
+          "halaman": 9,
+          "tema": "Rahsia Keperluan Mi‘raj",
+          "subtopik": [
+            {
+              "tajuk": "Perumpamaan Pertama",
+              "halaman": 10,
+              "huraian": "Seorang sultan yang mempunyai dua jenis perbicaraan"
+            },
+            {
+              "tajuk": "Perumpamaan Kedua",
+              "halaman": 11,
+              "huraian": "Perbandingan hubungan dengan matahari melalui cermin dan secara langsung"
+            }
+          ]
+        },
+        {
+          "tajuk": "Asas Kedua",
+          "halaman": 17,
+          "tema": "Hakikat Isra’ dan Mi‘raj",
+          "subtopik": [
+            {
+              "tajuk": "Perumpamaan Pertama",
+              "halaman": 19,
+              "huraian": "Seorang raja yang satu mempunyai pelbagai gelaran"
+            },
+            {
+              "tajuk": "Perumpamaan Kedua",
+              "halaman": 23,
+              "huraian": "Seorang askar dengan tugas berkaitan seluruh jabatan ketenteraan"
+            }
+          ],
+          "soalan": [
+            "Bagaimanakah seseorang yang tidak mengenal Allah dan Rasul dapat mempercayai Mi‘raj?",
+            "Bagaimanakah seseorang yang tidak menerima kewujudan makhluk di langit dan malaikat dapat mempercayai Mi‘raj?",
+            "Jika Allah Maha Dekat, mengapakah Nabi perlu menempuh jarak yang begitu jauh?",
+            "Bagaimanakah jasad manusia dapat menempuh jarak ribuan tahun dalam beberapa minit?",
+            "Adakah perkara ini mustahil menurut akal?",
+            "Untuk apakah baginda diangkat (Mi‘raj)? Apakah keperluannya?",
+            "Adakah Mi‘raj mempunyai bandingan yang boleh diterima akal?"
+          ]
+        },
+        {
+          "tajuk": "Asas Ketiga",
+          "halaman": 47,
+          "tema": "Hikmah Isra’ dan Mi‘raj",
+          "subtopik": [
+            {
+              "tajuk": "Perumpamaan Pertama",
+              "halaman": 50,
+              "huraian": "Sultan membina istana megah dan mengajak rakyat menyaksikannya"
+            },
+            {
+              "tajuk": "Perumpamaan Kedua",
+              "halaman": 55,
+              "huraian": "Penulis kitab yang ingin mengajarkan hasil karyanya"
+            }
+          ],
+          "soalan": [
+            "Terdapat tiga kemusykilan besar"
+          ]
+        },
+        {
+          "tajuk": "Asas Keempat",
+          "halaman": 75,
+          "tema": "Buah dan Faedah Isra’ dan Mi‘raj",
+          "subtopik": [
+            {
+              "tajuk": "Buah Pertama",
+              "halaman": 76,
+              "huraian": "Penyaksian asas-asas iman oleh Nabi Muhammad ﷺ"
+            },
+            {
+              "tajuk": "Buah Kedua",
+              "halaman": 77,
+              "huraian": "Pemberian asas-asas utama Islam kepada jin dan manusia, khususnya solat"
+            },
+            {
+              "tajuk": "Buah Ketiga",
+              "halaman": 79,
+              "huraian": "Penyaksian hakikat kebahagiaan abadi dan kuncinya"
+            },
+            {
+              "tajuk": "Buah Keempat",
+              "halaman": 80,
+              "huraian": "Kemungkinan melihat keindahan Allah"
+            },
+            {
+              "tajuk": "Buah Kelima",
+              "halaman": 81,
+              "huraian": "Manusia sebagai makhluk paling dicintai oleh Pencipta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tajuk": "Sinaran Keenam",
+      "halaman": 89,
+      "subtopik": [
+        {
+          "tajuk": "Nuktah Pertama",
+          "halaman": 90,
+          "huraian": "Makna-makna kalimah tahiyyāt yang penuh keberkatan"
+        },
+        {
+          "tajuk": "Nuktah Kedua",
+          "halaman": 95,
+          "tema": "Selawat dalam tahiyyāt",
+          "subtopik": [
+            {
+              "tajuk": "Aspek Pertama",
+              "halaman": 97,
+              "huraian": "Penyerupaan keluarga Nabi Muhammad dengan keluarga Nabi Ibrahim"
+            },
+            {
+              "tajuk": "Aspek Kedua",
+              "halaman": 98,
+              "huraian": "Hikmah dimasukkan lafaz selawat dalam tahiyyāt"
+            },
+            {
+              "tajuk": "Aspek Ketiga",
+              "halaman": 100,
+              "huraian": "Hakikat Maqām Maḥmūdah dan permohonannya"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tajuk": "Lampiran",
+      "subtopik": [
+        {
+          "tajuk": "Biografi Badī‘uzzamān Sa‘īd Nursī",
+          "halaman": 103
+        },
+        {
+          "tajuk": "Makna Istilah",
+          "halaman": 117
+        }
+      ]
+    }
+  ]
+};
+
+    function escapeHtml(str){ if(str===undefined||str===null) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function buildNode(item, level=0){
+      const hasChildren = (item.subtopik && item.subtopik.length) || (item.soalan && item.soalan.length);
+      // Leaf node (no subtopik and no soalan) — still render huraian if present
+      if(!hasChildren){
+        const container=document.createElement('div'); container.className='leaf level-'+level;
+        const titleTag = level>0? 'h3':'h2';
+        const title=document.createElement(titleTag);
+        title.innerHTML = `${escapeHtml(item.tajuk)} ${item.halaman? '<span class="page">'+escapeHtml(item.halaman)+'</span>':''}`;
+        container.appendChild(title);
+        if(item.keterangan){ const d=document.createElement('div'); d.className='muted'; d.textContent=item.keterangan; container.appendChild(d); }
+        if(item.tema){ const d=document.createElement('div'); d.className='muted'; d.innerHTML='<strong>'+escapeHtml(item.tema)+'</strong>' + (item.halaman? ' … '+escapeHtml(item.halaman): ''); container.appendChild(d); }
+        if(item.huraian){ const p=document.createElement('p'); p.className='subitem'; p.textContent=item.huraian; container.appendChild(p); }
+        return container;
+      }
+      const details=document.createElement('details');
+      const summary=document.createElement('summary'); const titleTag = level>0? 'h3':'h2'; const title=document.createElement(titleTag);
+      title.innerHTML = `${escapeHtml(item.tajuk)} ${item.halaman? '<span class="page">'+escapeHtml(item.halaman)+'</span>':''}`;
+      summary.appendChild(title); const caret=document.createElement('span'); caret.className='caret'; caret.setAttribute('aria-hidden','true'); summary.appendChild(caret); details.appendChild(summary);
+      if(item.keterangan){ const d=document.createElement('div'); d.className='muted'; d.textContent=item.keterangan; details.appendChild(d); }
+      if(item.tema){ const d=document.createElement('div'); d.className='muted'; d.innerHTML='<strong>'+escapeHtml(item.tema)+'</strong>' + (item.halaman? ' … '+escapeHtml(item.halaman): ''); details.appendChild(d); }
+      if(item.huraian){ const p=document.createElement('p'); p.className='subitem'; p.textContent=item.huraian; details.appendChild(p); }
+      if(item.subtopik && item.subtopik.length){ const ul=document.createElement('ul'); item.subtopik.forEach(sub=>{ const li=document.createElement('li'); li.appendChild(buildNode(sub, level+1)); ul.appendChild(li); }); details.appendChild(ul); }
+      if(item.soalan && item.soalan.length){ const h=document.createElement('h3'); h.textContent="Soalan-soalan Berkaitan Mi'raj"; details.appendChild(h); const qu=document.createElement('ul'); item.soalan.forEach(q=>{ const li=document.createElement('li'); li.textContent=q; qu.appendChild(li); }); details.appendChild(qu); }
+      return details;
+    }
+
+    function render(){ const root=document.getElementById('toc-root'); const ul=document.createElement('ul'); tocData.isi_kandungan.forEach(item=>{ const li=document.createElement('li'); li.appendChild(buildNode(item,0)); ul.appendChild(li); }); root.appendChild(ul); }
+    render();
+  </script>
+</body>
+</html>
