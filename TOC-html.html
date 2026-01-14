@@ -270,5 +270,27 @@
     function render(){ const root=document.getElementById('toc-root'); const ul=document.createElement('ul'); tocData.isi_kandungan.forEach(item=>{ const li=document.createElement('li'); li.appendChild(buildNode(item,0)); ul.appendChild(li); }); root.appendChild(ul); }
     render();
   </script>
+
+  <script>
+    (function(){
+      // Post the document height to parent frames so embeds can resize
+      function sendHeight() {
+        try{
+          const height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'timeline-height', height }, '*');
+        }catch(e){/* ignore cross-origin or missing parent */}
+      }
+      // initial and on resize
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      // when details toggle
+      document.addEventListener('toggle', sendHeight, true);
+      // observe DOM changes that affect layout
+      const ro = new MutationObserver(()=>{ setTimeout(sendHeight, 80); });
+      ro.observe(document.body, { childList:true, subtree:true, attributes:true });
+    })();
+  </script>
+
+  <script src="js/timeline.js"></script>
 </body>
 </html>
