@@ -20,7 +20,7 @@
     html,body{height:100%;margin:0}
     body{font-family:var(--sans);background:var(--bg);display:flex;align-items:flex-start;justify-content:center;padding:48px}
     .toc{width:420px;background:var(--card);border-radius:8px;padding:22px 20px;box-shadow:0 6px 18px rgba(16,18,32,0.06)}
-    .toc h1{margin:0 0 12px;color:var(--lvl1);letter-spacing:1px;font-size:20px}
+    .toc h1{margin:0 0 12px;color:var(--lvl1);letter-spacing:1px;font-size:30px}
 
     /* reset lists */
     .toc ul{list-style:none;padding:0;margin:0}
@@ -37,33 +37,33 @@
     summary h2, summary h3{display:block;word-break:break-word}
 
     /* level colors, sizes and typography */
-    summary h2{margin:0;color:var(--lvl1);font-weight:800;font-size:18px;letter-spacing:0.2px}
+    summary h2{margin:0;color:var(--lvl1);font-weight:800;font-size:27px;letter-spacing:0.2px}
     /* second-level headings */
-    details details summary h3{margin:0;color:var(--lvl2);font-weight:600;font-size:15px;letter-spacing:0.1px}
+    details details summary h3{margin:0;color:var(--lvl2);font-weight:600;font-size:22.5px;letter-spacing:0.1px}
     /* third-level headings (slightly lighter, smaller, italic for contrast) */
-    details details details summary h3{margin:0;color:var(--lvl3);font-weight:500;font-size:14px;font-style:italic}
+    details details details summary h3{margin:0;color:var(--lvl3);font-weight:500;font-size:21px;font-style:italic}
 
     .page{color:var(--muted);font-weight:600;margin-left:12px}
 
     /* caret uses current color for monochrome look */
     summary .caret{width:14px;height:14px;display:inline-block;transform:rotate(0);transition:transform .18s ease}
     details[open] > summary .caret{transform:rotate(180deg)}
-    .caret:after{content:'▾';color:currentColor;font-size:14px}
+    .caret:after{content:'▾';color:currentColor;font-size:21px}
 
     /* indentation per nesting */
     details > ul{margin-top:8px;padding-left:14px}
     details details > ul{padding-left:12px}
     details details details > ul{padding-left:10px}
 
-    .muted{color:var(--muted);font-size:13px}
+    .muted{color:var(--muted);font-size:19.5px}
     /* leaf/list items */
-    .subitem{color:var(--lvl3);font-size:13px;font-weight:400;margin:6px 0}
+    .subitem{color:var(--lvl3);font-size:19.5px;font-weight:400;margin:6px 0}
 
     /* leaf node title styles by nesting level */
     .leaf{padding:6px 0}
-    .leaf.level-0 h2{margin:0;color:var(--lvl1);font-weight:800;font-size:18px}
-    .leaf.level-1 h3{margin:0;color:var(--lvl2);font-weight:600;font-size:15px}
-    .leaf.level-2 h3{margin:0;color:var(--lvl3);font-weight:500;font-size:14px;font-style:italic}
+    .leaf.level-0 h2{margin:0;color:var(--lvl1);font-weight:800;font-size:27px}
+    .leaf.level-1 h3{margin:0;color:var(--lvl2);font-weight:600;font-size:22.5px}
+    .leaf.level-2 h3{margin:0;color:var(--lvl3);font-weight:500;font-size:21px;font-style:italic}
 
     /* subtle hover focus for discoverability */
     summary:hover, summary:focus{outline:none;opacity:0.95}
